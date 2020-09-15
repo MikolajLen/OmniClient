@@ -3,22 +3,17 @@ package co.micode.omniclient.ui.topics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import co.micode.omniclient.R
 import co.micode.omniclient.data.entities.TopicEntity
-import co.micode.omniclient.utils.SingleLiveEvent
+import co.micode.omniclient.ui.list.BaseListAdapter
 import kotlinx.android.synthetic.main.item_topic.view.*
 import javax.inject.Inject
 
 class TopicsAdapter
 @Inject
-constructor() : RecyclerView.Adapter<TopicsHolder>() {
-
-    private val items = arrayListOf<TopicEntity>()
-    private val navigateToDetailsEvents = SingleLiveEvent<String>()
-    val navigateActions: LiveData<String?> = navigateToDetailsEvents
+constructor() : BaseListAdapter<TopicEntity, TopicsHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = TopicsHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.item_topic, parent, false)
@@ -31,15 +26,10 @@ constructor() : RecyclerView.Adapter<TopicsHolder>() {
         }
     }
 
-    override fun getItemCount() = items.size
-
-    fun setItems(newItems: List<TopicEntity>) {
-        val diffCallback = TopicsDiffCallback(items, newItems)
-        val result = DiffUtil.calculateDiff(diffCallback)
-        items.clear()
-        items.addAll(newItems)
-        result.dispatchUpdatesTo(this)
-    }
+    override fun createDiffUtill(
+        oldList: List<TopicEntity>,
+        newList: List<TopicEntity>
+    ) = TopicsDiffCallback(oldList, newList)
 }
 
 class TopicsHolder(view: View) : RecyclerView.ViewHolder(view) {

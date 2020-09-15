@@ -1,4 +1,4 @@
-package co.micode.omniclient.ui
+package co.micode.omniclient.ui.details
 
 import android.os.Bundle
 import android.view.LayoutInflater

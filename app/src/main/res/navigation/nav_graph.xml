@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="co.micode.omniclient.ui.DetailsFragment"
+        android:name="co.micode.omniclient.ui.details.DetailsFragment"
         android:label="DetailsFragment"
         tools:layout="@layout/fragment_details">
         <argument
