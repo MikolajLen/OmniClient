@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">OmniClient</string>
+    <string name="search_title">Search for an article</string>
+    <string name="articles">Articles</string>
+    <string name="topics">Topics</string>
+    <string name="no_results_has_been_found">No results have been found.</string>
+    <string name="error_message">Unexpected error occurs</string>
+    <string name="article_photo">Article photo</string>
+    <string name="article">Article</string>
+    <string name="topic">topic</string>
+</resources>
